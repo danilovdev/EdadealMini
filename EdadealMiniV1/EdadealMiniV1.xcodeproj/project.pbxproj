@@ -15,6 +15,7 @@
 		3C3DDE49213BD37D00BCC10D /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3DDE48213BD37D00BCC10D /* PurchasesViewController.swift */; };
 		3C3DDE4B213BD5AF00BCC10D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3DDE4A213BD5AF00BCC10D /* Item.swift */; };
 		3C3DDE4D213BD90000BCC10D /* PurchaseItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3DDE4C213BD90000BCC10D /* PurchaseItemCell.swift */; };
+		3C8EC4D921454516000B483F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8EC4D821454516000B483F /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3C3DDE48213BD37D00BCC10D /* PurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 		3C3DDE4A213BD5AF00BCC10D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3C3DDE4C213BD90000BCC10D /* PurchaseItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseItemCell.swift; sourceTree = "<group>"; };
+		3C8EC4D821454516000B483F /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				3C3DDE48213BD37D00BCC10D /* PurchasesViewController.swift */,
 				3C3DDE4A213BD5AF00BCC10D /* Item.swift */,
 				3C3DDE4C213BD90000BCC10D /* PurchaseItemCell.swift */,
+				3C8EC4D821454516000B483F /* StringExtensions.swift */,
 			);
 			path = EdadealMiniV1;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C8EC4D921454516000B483F /* StringExtensions.swift in Sources */,
 				3C3DDE4B213BD5AF00BCC10D /* Item.swift in Sources */,
 				3C3DDE47213BD35800BCC10D /* SearchViewController.swift in Sources */,
 				3C3DDE4D213BD90000BCC10D /* PurchaseItemCell.swift in Sources */,

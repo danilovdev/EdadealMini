@@ -11,7 +11,7 @@ import UIKit
 
 class PurchaseItemCell: UITableViewCell {
     
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel! 
     
     @IBOutlet weak var retailerLabel: UILabel!
     
@@ -26,12 +26,25 @@ class PurchaseItemCell: UITableViewCell {
     @IBAction func actionButtonTapped(_ sender: UIButton) {
     }
     
-    func configure(item: Item) {
+    func configure(item: Item, ranges: [Range<String.Index>]? = nil) {
         
-        descriptionLabel.text = item.description
-        retailerLabel.text = item.retailer
-        priceLabel.text = item.priceStr
-        discountLabel.text = item.discountStr
+        textLabel?.numberOfLines = 0
+        
+        let attributedText = NSMutableAttributedString(
+            attributedString: NSAttributedString(string: item.description!,
+                                                 attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)]))
+        
+        if let ranges = ranges {
+            for range in ranges {
+                attributedText.addAttributes([
+                    NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18),
+                    NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue],
+                                             range: NSRange(range, in: attributedText.string))
+            }
+        }
+        
+        textLabel?.attributedText = attributedText
+        
     }
     
 }

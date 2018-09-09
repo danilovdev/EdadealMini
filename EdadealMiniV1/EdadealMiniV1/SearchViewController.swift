@@ -21,6 +21,8 @@ class SearchViewController: UIViewController {
     
     private var items = [Item]()
     
+    private var filteredItems = [(Item, [Range<String.Index>]?)]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,7 @@ class SearchViewController: UIViewController {
     }
     
     private func configureTableView() {
+        tableView.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
@@ -38,9 +41,12 @@ class SearchViewController: UIViewController {
     }
     
     private func configureSearchBar() {
+        searchController.searchResultsUpdater = self
+        definesPresentationContext = true
         if #available(iOS 11, *) {
             navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
+            searchController.obscuresBackgroundDuringPresentation = false
         } else {
             tableView.tableHeaderView = searchController.searchBar
         }
@@ -53,9 +59,7 @@ class SearchViewController: UIViewController {
         guard let url = URL(string: urlStr) else { return }
         indicator.startAnimating()
         let task = session.dataTask(with: url) { data, response, error in
-            
             guard let data = data else { return }
-            
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 
@@ -63,15 +67,18 @@ class SearchViewController: UIViewController {
                     for itemDict in jsonArray {
                         let item = Item(dictionary: itemDict)
                         self.items.append(item)
-                        
                     }
                     DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.indicator.stopAnimating()
+                        UIView.transition(with: self.tableView,
+                                          duration: 0.4,
+                                          options: .transitionCrossDissolve,
+                                          animations: {
+                                            self.tableView.isHidden = false
+                                            self.tableView.reloadData()
+                                            self.indicator.stopAnimating()
+                        })
                     }
                 }
-                
-                
             } catch {
                 
             }
@@ -79,6 +86,45 @@ class SearchViewController: UIViewController {
         task.resume()
     }
     
+    private func filterContentForSearchText(_ searchText: String) {
+        guard searchText.count > 1 else {
+            filteredItems = items.map { ($0, nil) }
+            tableView.reloadData()
+            return
+        }
+        
+        filteredItems = items.filter {
+            guard searchText.count > 1 else { return true }
+            guard let description = $0.description else { return true }
+            return description.lowercased().contains(searchText.lowercased())
+            }
+            .sorted(by: { item1, item2 -> Bool in
+                guard let weight1 = item1.description!.calculateWeightForSubstring(substring: searchText),
+                    let weight2 = item2.description!.calculateWeightForSubstring(substring: searchText) else { return false }
+                switch (weight1.isStart, weight2.isStart) {
+                case (true, true):
+                    return weight1.index < weight2.index
+                case (true, false):
+                    return true
+                case (false, true):
+                    return false
+                case (false, false):
+                    return weight1.index < weight2.index
+                }
+            })
+            .map {
+                ($0, $0.description!.getAllSubranges(substring: searchText))
+        }
+        tableView.reloadData()
+    }
+    
+    private func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    private func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -88,13 +134,23 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredItems.count
+        }
         return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! PurchaseItemCell
-        let item = items[indexPath.row]
-        cell.configure(item: item)
+        let item: Item
+        var ranges: [Range<String.Index>]?
+        if isFiltering() {
+            item = filteredItems[indexPath.row].0
+            ranges = filteredItems[indexPath.row].1
+        } else {
+            item = items[indexPath.row]
+        }
+        cell.configure(item: item, ranges: ranges)
         return cell
     }
     
@@ -103,6 +159,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        
+        let searchBar = searchController.searchBar
+        guard let text = searchBar.text else { return }
+        filterContentForSearchText(text)
     }
 }
