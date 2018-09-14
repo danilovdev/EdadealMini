@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C3A49CC214BFDBE00B01F2C /* PurchaseItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C3A49CB214BFDBE00B01F2C /* PurchaseItemCell.xib */; };
+		3C3A49CE214C01F500B01F2C /* GlobalValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3A49CD214C01F500B01F2C /* GlobalValues.swift */; };
 		3C3DDE35213BD23300BCC10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3DDE34213BD23300BCC10D /* AppDelegate.swift */; };
 		3C3DDE3A213BD23300BCC10D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C3DDE38213BD23300BCC10D /* Main.storyboard */; };
 		3C3DDE3C213BD23300BCC10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3DDE3B213BD23300BCC10D /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C3A49CB214BFDBE00B01F2C /* PurchaseItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseItemCell.xib; sourceTree = "<group>"; };
+		3C3A49CD214C01F500B01F2C /* GlobalValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalValues.swift; sourceTree = "<group>"; };
 		3C3DDE31213BD23300BCC10D /* EdadealMiniV1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdadealMiniV1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3DDE34213BD23300BCC10D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C3DDE39213BD23300BCC10D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				3C3DDE4A213BD5AF00BCC10D /* Item.swift */,
 				3C3DDE4C213BD90000BCC10D /* PurchaseItemCell.swift */,
 				3C8EC4D821454516000B483F /* StringExtensions.swift */,
+				3C3A49CB214BFDBE00B01F2C /* PurchaseItemCell.xib */,
+				3C3A49CD214C01F500B01F2C /* GlobalValues.swift */,
 			);
 			path = EdadealMiniV1;
 			sourceTree = "<group>";
@@ -137,6 +143,7 @@
 				3C3DDE3F213BD23300BCC10D /* LaunchScreen.storyboard in Resources */,
 				3C3DDE3C213BD23300BCC10D /* Assets.xcassets in Resources */,
 				3C3DDE3A213BD23300BCC10D /* Main.storyboard in Resources */,
+				3C3A49CC214BFDBE00B01F2C /* PurchaseItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +160,7 @@
 				3C3DDE4D213BD90000BCC10D /* PurchaseItemCell.swift in Sources */,
 				3C3DDE49213BD37D00BCC10D /* PurchasesViewController.swift in Sources */,
 				3C3DDE35213BD23300BCC10D /* AppDelegate.swift in Sources */,
+				3C3A49CE214C01F500B01F2C /* GlobalValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

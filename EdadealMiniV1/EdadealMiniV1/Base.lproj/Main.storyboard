@@ -10,34 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Список Покупок-->
-        <scene sceneID="Rpb-n0-yx4">
-            <objects>
-                <viewController id="FSj-me-cgQ" customClass="PurchasesViewController" customModule="EdadealMiniV1" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PZB-OP-Tnj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gyS-Oe-SJu">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="kJn-eJ-Wfu" firstAttribute="bottom" secondItem="gyS-Oe-SJu" secondAttribute="bottom" id="7KT-TD-ibF"/>
-                            <constraint firstItem="gyS-Oe-SJu" firstAttribute="leading" secondItem="kJn-eJ-Wfu" secondAttribute="leading" id="DfK-tv-LHR"/>
-                            <constraint firstItem="gyS-Oe-SJu" firstAttribute="top" secondItem="kJn-eJ-Wfu" secondAttribute="top" id="Rb3-jT-ElU"/>
-                            <constraint firstItem="gyS-Oe-SJu" firstAttribute="trailing" secondItem="kJn-eJ-Wfu" secondAttribute="trailing" id="hgo-D0-9V0"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="kJn-eJ-Wfu"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Список Покупок" id="5T9-vB-WVI"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fiU-4p-GDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1500" y="359.37031484257875"/>
-        </scene>
         <!--Поиск-->
         <scene sceneID="r2B-W8-XvJ">
             <objects>
@@ -49,17 +21,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JJr-dD-HHG">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PurchaseCell" rowHeight="154" id="a9Z-Lf-FsN" customClass="PurchaseItemCell" customModule="EdadealMiniV1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="154"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a9Z-Lf-FsN" id="YEv-Fs-AqO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="153.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KoT-Tb-Y7X">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
@@ -136,12 +97,43 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="FSj-me-cgQ" kind="relationship" relationship="rootViewController" id="Xdv-ug-sJq"/>
+                        <segue destination="yYo-f6-Cv0" kind="relationship" relationship="rootViewController" id="lRj-PC-cCv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40a-GD-TqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="560.79999999999995" y="359.37031484257875"/>
+        </scene>
+        <!--Список Покупок-->
+        <scene sceneID="Ro7-LG-KHp">
+            <objects>
+                <viewController id="yYo-f6-Cv0" customClass="PurchasesViewController" customModule="EdadealMiniV1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qXr-8G-mbi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bnq-WV-xzE">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32366772005436051" green="1" blue="0.21244596088941226" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bnq-WV-xzE" firstAttribute="trailing" secondItem="4xl-WD-RmZ" secondAttribute="trailing" id="Rpp-TI-2Bk"/>
+                            <constraint firstItem="Bnq-WV-xzE" firstAttribute="bottom" secondItem="4xl-WD-RmZ" secondAttribute="bottom" id="Zxg-I3-ARf"/>
+                            <constraint firstItem="Bnq-WV-xzE" firstAttribute="top" secondItem="4xl-WD-RmZ" secondAttribute="top" id="lWk-w6-qZM"/>
+                            <constraint firstItem="Bnq-WV-xzE" firstAttribute="leading" secondItem="4xl-WD-RmZ" secondAttribute="leading" id="smY-am-tqE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4xl-WD-RmZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Список Покупок" id="UbE-Wa-PK7"/>
+                    <connections>
+                        <outlet property="tableView" destination="Bnq-WV-xzE" id="eyd-FQ-wNG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yAC-u4-Abn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1500" y="358.4707646176912"/>
         </scene>
     </scenes>
     <resources>

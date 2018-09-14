@@ -8,7 +8,15 @@
 
 import Foundation
 
-struct Item {
+struct Item: Equatable {
+    
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        return (lhs.description == rhs.description &&
+            lhs.discount == rhs.discount &&
+            lhs.image == rhs.image &&
+            lhs.price == rhs.price &&
+            lhs.retailer == rhs.retailer)
+    }
     
     var description: String?
     

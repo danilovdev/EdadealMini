@@ -13,13 +13,13 @@ class SearchViewController: UIViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
     
-    private let identifier = "PurchaseCell"
-    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     private var items = [Item]()
+    
+    private let cellId = "PurchaseCell"
     
     private var filteredItems = [(Item, [Range<String.Index>]?)]()
     
@@ -38,6 +38,8 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView()
+        tableView.register(UINib(nibName: "PurchaseItemCell", bundle: nil), forCellReuseIdentifier: "PurchaseCell")
     }
     
     private func configureSearchBar() {
@@ -141,7 +143,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! PurchaseItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PurchaseItemCell
         let item: Item
         var ranges: [Range<String.Index>]?
         if isFiltering() {
@@ -150,7 +152,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             item = items[indexPath.row]
         }
-        cell.configure(item: item, ranges: ranges)
+        cell.configure(item: item, mode: .purchase, ranges: ranges)
         return cell
     }
     
